@@ -2,7 +2,7 @@
 
 A **default-deny privacy gate** for AI-generated content.
 
-Before any draft — a LinkedIn post, a document, an LLM output — leaves your machine, pipe it through `content-mask`. It **masks known names** (client / customer → pseudonym) and **blocks** on confidential patterns. Built in: IPv4, email, MAC and Israeli phone numbers. Internal hostnames and codenames come from your config.
+Before any draft leaves your machine, pipe it through `content-mask`. That can be a LinkedIn post, a document or an LLM output. It **masks known names** (client / customer → pseudonym) and **blocks** on confidential patterns. Built in: IPv4, email, MAC and Israeli phone numbers. Internal hostnames and codenames come from your config.
 
 Built for the common case: you generate content with an LLM and want a hard stop before it goes public.
 It is a regex gate. It only catches what its patterns describe. Anything else passes.
@@ -11,10 +11,10 @@ It is a regex gate. It only catches what its patterns describe. Anything else pa
 
 The gate is **never weaker than the code**:
 
-- **Built-in block patterns fire even if the config supplies none** — you can't accidentally configure the safety away.
-- **Masking never suppresses block detection** — blocks are scanned on the *original* text, so a mask can't hide a leak.
-- **A malformed config pattern fails _closed_** — a bad regex makes the gate refuse to run rather than pass unsafe text.
-- **Case-insensitive throughout** — a different casing of a name can't bypass the mask.
+- **Built-in block patterns fire even if the config supplies none.** You can't configure them away by accident.
+- **Masking never suppresses block detection.** Blocks are scanned on the *original* text, so a mask can't hide a leak.
+- **A malformed config pattern fails _closed_.** A bad regex makes the gate refuse to run rather than pass unsafe text.
+- **Case-insensitive throughout.** A different casing of a name can't bypass the mask.
 
 ## Built-in blocks
 
@@ -25,7 +25,7 @@ The gate is **never weaker than the code**:
 
 Add your own (internal hostnames, project codenames, …) via config.
 
-## Usage — as a pipeline gate
+## Usage as a pipeline gate
 
 ```bash
 echo "draft text…" | python scan.py
@@ -60,4 +60,4 @@ Each promise above has a test in `tests/test_scan.py`. CI runs them plus a gitle
 
 ---
 
-By **Gustavo Norymberg** — AI & Agentic Platform Architect. [LinkedIn](https://www.linkedin.com/in/gustavonorymberg)
+By **Gustavo Norymberg**, AI & Agentic Platform Architect. [LinkedIn](https://www.linkedin.com/in/gustavonorymberg)

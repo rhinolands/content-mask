@@ -1,5 +1,6 @@
 """Privacy gate (spec §7). Default-deny: mask known clients, BLOCK on
-unmasked confidential patterns (IPs, internal hostnames, config strings)."""
+confidential patterns. Built in: IPv4, email, MAC, Israeli phone numbers.
+Internal hostnames and other strings come from the config's block_patterns."""
 
 from __future__ import annotations
 
